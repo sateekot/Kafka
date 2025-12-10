@@ -7,9 +7,9 @@ It involves two steps.
     * Retention policy - how many hours/days you want to keep the snapshots
 2. Follow below steps to perform recovery from the snapshots.
     * Scale down replicas to 0 for the statefulset you want to recover from snapshot
-    ``` kubectl scale statefulset <statefulset-name> --replicas=0 -n <namespace> ```
+       * ``` kubectl scale statefulset <statefulset-name> --replicas=0 -n <namespace> ```
     * Delete existing PVCs for which we want to restore the snapshot.
-    ``` kubectl delete pvc <pvc-name> -n <namespace> ```
+      * ``` kubectl delete pvc <pvc-name> -n <namespace> ```
     **Note:** If this command get stuck, it could be because of pvc-protection policy on PVC, need to delete the "finalizers" section from PVC configuration.
     * Create a volume from EBS snapshot by providing size, tags and AZ requirements.
     * EC2 -> Snapshots -> Select the snapshot you want to create a volume from -> Click on "Create volume from snapshot" from the Actions menu.
